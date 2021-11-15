@@ -17,22 +17,18 @@ APaddleAI::APaddleAI() : Super()
 
 void APaddleAI::Tick(float DeltaTime)
 {
-
 	MovementVertical = 0;
 	FVector NewLocation = GetActorLocation();
 	if (pBall)
 	{
-		if (pBall->GetActorLocation().Z > NewLocation.Z)
+		if (pBall->GetActorLocation().Z > NewLocation.Z) //if ball is above, move up
 		{
-
 			MovementVertical = 1;
 		}
-		else if (pBall->GetActorLocation().Z < NewLocation.Z)
+		else if (pBall->GetActorLocation().Z < NewLocation.Z) //if ball is below, move down
 		{
 			MovementVertical = -1;
 		}
-
-
 		if (MovementVertical != 0)
 		{
 			NewLocation = GetActorLocation() + (GetActorUpVector() * MovementVertical * Speed * DeltaTime);
